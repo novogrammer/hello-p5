@@ -1,5 +1,6 @@
 
 import p5 from "p5";
+import Stats from "stats.js";
 import { getElementSize } from "./dom_utils";
 import {BREAK_WIDTH_PC} from "./constants";
 
@@ -11,6 +12,7 @@ const CELL_HEIGHT=100;
 
 export default class FirstApp{
   p:p5;
+  stats:Stats;
   sectionElement: HTMLElement;
   constructor(){
     const sectionElement=document.querySelector<HTMLElement>(".p-section-first");
@@ -18,7 +20,9 @@ export default class FirstApp{
       throw new Error("sectionElement is null");
     }
     this.sectionElement=sectionElement;
-        
+    this.stats=new Stats();
+    this.stats.dom.style.top="0px";
+    document.body.appendChild( this.stats.dom );
     const sketch=(p:p5)=>{
       p.setup=()=>{
         this.onSetup();
@@ -27,7 +31,9 @@ export default class FirstApp{
         this.onWindowResized();
       }
       p.draw=()=>{
+        this.stats.begin();
         this.onDraw();
+        this.stats.end();
       };
     };
     this.p=new p5(sketch,sectionElement);
