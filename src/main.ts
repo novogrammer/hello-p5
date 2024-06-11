@@ -1,12 +1,12 @@
-import App from './App';
+import FirstApp from './FirstApp';
 import './style.scss'
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-<section class="p-section-hero"></section>
-<section class="p-section-about">.p-section-about</section>
+<section class="p-section-first"></section>
+<section class="p-section-second">.p-section-second</section>
 `;
 
 
 
 
-(window as any).app=new App();
+(window as any).firstApp=new FirstApp();

@@ -9,15 +9,15 @@ const CELL_WIDTH=100;
 const CELL_HEIGHT=100;
 
 
-export default class App{
+export default class FirstApp{
   p:p5;
-  heroElement: HTMLElement;
+  sectionElement: HTMLElement;
   constructor(){
-    const heroElement=document.querySelector<HTMLElement>(".p-section-hero");
-    if(!heroElement){
-      throw new Error("heroElement is null");
+    const sectionElement=document.querySelector<HTMLElement>(".p-section-first");
+    if(!sectionElement){
+      throw new Error("sectionElement is null");
     }
-    this.heroElement=heroElement;
+    this.sectionElement=sectionElement;
         
     const sketch=(p:p5)=>{
       p.setup=()=>{
@@ -30,11 +30,11 @@ export default class App{
         this.onDraw();
       };
     };
-    this.p=new p5(sketch,heroElement);
+    this.p=new p5(sketch,sectionElement);
 
   }
   onSetup(){
-    const {width,height} = getElementSize(this.heroElement);
+    const {width,height} = getElementSize(this.sectionElement);
     const {p}=this;
 
     p.createCanvas(width,height);
@@ -43,7 +43,7 @@ export default class App{
 
   }
   onWindowResized(){
-    const {width,height} = getElementSize(this.heroElement);
+    const {width,height} = getElementSize(this.sectionElement);
     const {p}=this;
     p.resizeCanvas(width,height);
 
@@ -96,7 +96,7 @@ export default class App{
   }
   onDraw(){
     const {p}=this;
-    const {width,height} = getElementSize(this.heroElement);
+    const {width,height} = getElementSize(this.sectionElement);
 
     let virtualWidth:number;
     let virtualHeight:number;
