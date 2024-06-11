@@ -66,10 +66,10 @@ export default class App{
     p.push();
 
     // const gradient=drawingContext.createLinearGradient(0,0,CELL_WIDTH,CELL_HEIGHT);
-    const gradient=drawingContext.createRadialGradient(CELL_WIDTH/3,CELL_HEIGHT/3,0,CELL_WIDTH/2,CELL_HEIGHT/2,CELL_WIDTH/2);
+    const gradient=drawingContext.createRadialGradient(CELL_WIDTH/3,CELL_HEIGHT/4,0,CELL_WIDTH/4,CELL_HEIGHT/2,CELL_WIDTH/2);
     
     // p.fill(0,0,255);
-    const n=p.noise(x,y,performance.now()/1000);
+    const n=p.noise(x/200,y/200,performance.now()/1000*0.5);
     p.colorMode(p.HSB,255);
     // p.fill(n*255,255,255);
     gradient.addColorStop(0,p.color(n*255,0,255) as any);
