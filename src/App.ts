@@ -51,21 +51,30 @@ export default class App{
   drawCell(x:number,y:number){
     const {p}=this;
 
+    const drawingContext=p.drawingContext as CanvasRenderingContext2D;
+
     p.push();
     p.translate(x,y);
     p.strokeWeight(0);
     p.rect(0,0,CELL_WIDTH,CELL_HEIGHT);
-    p.drawingContext.clip();
+    drawingContext.clip();
 
     p.fill(0,255,0);
     p.circle(CELL_WIDTH/2,CELL_HEIGHT/2,CELL_WIDTH*1.1);
-    p.drawingContext.clip();
+    drawingContext.clip();
 
     p.push();
+
+    // const gradient=drawingContext.createLinearGradient(0,0,CELL_WIDTH,CELL_HEIGHT);
+    const gradient=drawingContext.createRadialGradient(CELL_WIDTH/3,CELL_HEIGHT/3,0,CELL_WIDTH/2,CELL_HEIGHT/2,CELL_WIDTH/2);
+    
     // p.fill(0,0,255);
     const n=p.noise(x,y,performance.now()/1000);
     p.colorMode(p.HSB,255);
-    p.fill(n*255,255,255);
+    // p.fill(n*255,255,255);
+    gradient.addColorStop(0,p.color(n*255,0,255) as any);
+    gradient.addColorStop(1,p.color(n*255,255,255) as any);
+    drawingContext.fillStyle=gradient;
     p.colorMode(p.RGB);
     p.rect(0,0,CELL_WIDTH,CELL_HEIGHT);
     p.pop();
