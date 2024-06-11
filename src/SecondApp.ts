@@ -60,7 +60,7 @@ export default class SecondApp{
   drawCell(x:number,y:number){
     const {p}=this;
 
-    const drawingContext=p.drawingContext as CanvasRenderingContext2D;
+    // const drawingContext=p.drawingContext as CanvasRenderingContext2D;
 
     p.push();
     p.translate(x,y);
