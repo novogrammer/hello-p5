@@ -83,12 +83,15 @@ export default class App{
     p.stroke(0,0,0);
     p.strokeWeight(10);
     p.textAlign(p.LEFT,p.TOP);
+    p.textFont("M PLUS Rounded 1c");
+    p.textStyle("bold");
+
     p.textSize(40);
     p.text("Hello!",0,0);
     // p.scale(0.25,0.25);
     // p.scale(2,2);
     // p.scale(10,10);
-    p.rect(CELL_WIDTH/2,CELL_HEIGHT/2,CELL_WIDTH/2,CELL_HEIGHT/2);
+    p.rect(CELL_WIDTH/2,CELL_HEIGHT/2,CELL_WIDTH/4,CELL_HEIGHT/4);
     p.pop();
   }
   onDraw(){
